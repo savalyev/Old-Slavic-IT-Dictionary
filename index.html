@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Old Slavic IT Dictionary</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=IM+Fell+English:ital@0;1&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root,[data-theme="light"]{
+  --color-bg:#f5f0e8;--color-surface:#faf6ee;--color-surface-2:#fffdf8;
+  --color-surface-offset:#ede6d6;--color-divider:#c9b99a;--color-border:#b8a88a;
+  --color-text:#2a1f0e;--color-text-muted:#6b5a3e;--color-text-faint:#a8967a;
+  --color-text-inverse:#faf6ee;--color-primary:#7c3d0e;--color-primary-hover:#5e2d09;
+  --color-primary-active:#3d1c05;--color-primary-highlight:#e8d5c0;
+  --color-gold:#b8890a;--color-gold-light:#e8c96a;
+  --radius-sm:.25rem;--radius-md:.5rem;--radius-lg:.75rem;--radius-xl:1rem;--radius-full:9999px;
+  --shadow-sm:0 1px 3px oklch(0.2 0.05 50/.10);--shadow-md:0 4px 16px oklch(0.2 0.05 50/.14);--shadow-lg:0 12px 40px oklch(0.2 0.05 50/.18);
+  --font-display:'UnifrakturMaguntia',cursive;--font-serif:'IM Fell English','Georgia',serif;--font-body:'Crimson Text','Georgia',serif;
+  --text-xs:clamp(.75rem,.7rem + .25vw,.875rem);--text-sm:clamp(.9rem,.85rem + .25vw,1.05rem);
+  --text-base:clamp(1.05rem,1rem + .25vw,1.2rem);--text-lg:clamp(1.2rem,1.1rem + .6vw,1.6rem);
+  --text-xl:clamp(1.6rem,1.2rem + 1.2vw,2.4rem);--text-2xl:clamp(2.2rem,1.4rem + 2.2vw,3.8rem);
+  --text-hero:clamp(2.8rem,1rem + 5vw,6rem);
+  --space-1:.25rem;--space-2:.5rem;--space-3:.75rem;--space-4:1rem;--space-5:1.25rem;
+  --space-6:1.5rem;--space-8:2rem;--space-10:2.5rem;--space-12:3rem;--space-16:4rem;--space-20:5rem;
+  --content-narrow:640px;--content-default:900px;
+  --transition:200ms cubic-bezier(.16,1,.3,1);
+}
+[data-theme="dark"]{
+  --color-bg:#1a1208;--color-surface:#211608;--color-surface-2:#271b0a;
+  --color-surface-offset:#1e1509;--color-divider:#3a2c14;--color-border:#4a3820;
+  --color-text:#e8d9bc;--color-text-muted:#a08c6a;--color-text-faint:#6b5840;
+  --color-text-inverse:#1a1208;--color-primary:#c87830;--color-primary-hover:#e09040;
+  --color-primary-active:#f0a850;--color-primary-highlight:#3a2210;
+  --color-gold:#d4a830;--color-gold-light:#f0d060;
+  --shadow-sm:0 1px 3px oklch(0 0 0/.35);--shadow-md:0 4px 16px oklch(0 0 0/.45);--shadow-lg:0 12px 40px oklch(0 0 0/.55);
+}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+body{min-height:100dvh;font-family:var(--font-body);font-size:var(--text-base);color:var(--color-text);background:var(--color-bg);line-height:1.65}
+img,svg{display:block;max-width:100%}
+button{cursor:pointer;background:none;border:none;font:inherit;color:inherit}
+a{color:var(--color-primary);text-decoration:none;transition:color var(--transition)}
+a:hover{color:var(--color-primary-hover)}
+::selection{background:oklch(from var(--color-primary) l c h/.25);color:var(--color-text)}
+:focus-visible{outline:2px solid var(--color-primary);outline-offset:3px;border-radius:var(--radius-sm)}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important}}
+
+.site-header{position:sticky;top:0;z-index:100;background:oklch(from var(--color-bg) l c h/.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--color-divider);padding:var(--space-3) var(--space-6);display:flex;align-items:center;justify-content:space-between;gap:var(--space-4)}
+.logo-wrap{display:flex;align-items:center;gap:var(--space-3)}
+.logo-title{font-family:var(--font-display);font-size:clamp(1.1rem,2.5vw,1.6rem);color:var(--color-primary)}
+.header-right{display:flex;align-items:center;gap:var(--space-3)}
+.theme-btn{width:36px;height:36px;border-radius:var(--radius-full);display:flex;align-items:center;justify-content:center;color:var(--color-text-muted);border:1px solid var(--color-border);transition:color var(--transition),border-color var(--transition),background var(--transition)}
+.theme-btn:hover{color:var(--color-text);border-color:var(--color-primary);background:var(--color-primary-highlight)}
+.github-btn{display:flex;align-items:center;gap:var(--space-2);padding:var(--space-2) var(--space-4);border-radius:var(--radius-full);font-size:var(--text-sm);font-family:var(--font-body);font-weight:600;background:var(--color-primary);color:var(--color-text-inverse);transition:background var(--transition)}
+.github-btn:hover{background:var(--color-primary-hover);color:var(--color-text-inverse)}
+
+.hero{text-align:center;padding:clamp(var(--space-16),10vw,var(--space-20)) var(--space-6) clamp(var(--space-10),6vw,var(--space-16));position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 0%,oklch(from var(--color-primary) l c h/.12),transparent 70%);pointer-events:none}
+.hero-ornament{font-family:var(--font-serif);font-size:var(--text-sm);color:var(--color-gold);letter-spacing:.3em;text-transform:uppercase;margin-bottom:var(--space-4);font-style:italic}
+.hero-title{font-family:var(--font-display);font-size:var(--text-hero);color:var(--color-primary);line-height:1.05;margin-bottom:var(--space-4)}
+.hero-sub{font-family:var(--font-serif);font-style:italic;font-size:var(--text-lg);color:var(--color-text-muted);max-width:52ch;margin:0 auto var(--space-8);line-height:1.5}
+.hero-divider{width:120px;height:1px;background:var(--color-divider);margin:0 auto var(--space-8);position:relative}
+.hero-divider::before,.hero-divider::after{content:'✦';position:absolute;top:50%;transform:translateY(-50%);color:var(--color-gold);font-size:.6rem}
+.hero-divider::before{left:-14px}.hero-divider::after{right:-14px}
+.hero-stats{display:flex;justify-content:center;gap:var(--space-10);flex-wrap:wrap}
+.stat{text-align:center}
+.stat-num{font-family:var(--font-display);font-size:var(--text-xl);color:var(--color-primary);display:block}
+.stat-label{font-size:var(--text-xs);color:var(--color-text-faint);text-transform:uppercase;letter-spacing:.12em}
+
+.search-section{padding:0 var(--space-6) var(--space-10);max-width:var(--content-narrow);margin:0 auto}
+.search-wrap{position:relative}
+.search-wrap svg{position:absolute;left:var(--space-4);top:50%;transform:translateY(-50%);color:var(--color-text-faint);pointer-events:none}
+#search{width:100%;padding:var(--space-4) var(--space-4) var(--space-4) calc(var(--space-10) + var(--space-2));font-family:var(--font-body);font-size:var(--text-base);background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-xl);color:var(--color-text);outline:none;transition:border-color var(--transition),box-shadow var(--transition);box-shadow:var(--shadow-sm)}
+#search::placeholder{color:var(--color-text-faint)}
+#search:focus{border-color:var(--color-primary);box-shadow:var(--shadow-md),0 0 0 3px oklch(from var(--color-primary) l c h/.15)}
+
+.alpha-nav{max-width:var(--content-default);margin:0 auto var(--space-8);padding:0 var(--space-6);display:flex;flex-wrap:wrap;gap:var(--space-2);justify-content:center}
+.alpha-btn{width:32px;height:32px;border-radius:var(--radius-md);font-family:var(--font-serif);font-size:var(--text-sm);font-weight:600;color:var(--color-text-muted);border:1px solid transparent;display:flex;align-items:center;justify-content:center;transition:all var(--transition)}
+.alpha-btn:hover,.alpha-btn.active{background:var(--color-primary);color:var(--color-text-inverse);border-color:var(--color-primary)}
+
+.dict-section{max-width:var(--content-default);margin:0 auto;padding:0 var(--space-6) var(--space-20)}
+.letter-group{margin-bottom:var(--space-12)}.letter-group.hidden{display:none}
+.letter-heading{font-family:var(--font-display);font-size:var(--text-2xl);color:var(--color-primary);margin-bottom:var(--space-6);padding-bottom:var(--space-3);border-bottom:1px solid var(--color-divider);position:relative}
+.letter-heading::after{content:'';position:absolute;bottom:-1px;left:0;width:40px;height:2px;background:var(--color-gold);border-radius:var(--radius-full)}
+.entries{display:grid;gap:var(--space-4)}
+.entry{background:var(--color-surface);border:1px solid oklch(from var(--color-text) l c h/.08);border-radius:var(--radius-lg);padding:var(--space-6);box-shadow:var(--shadow-sm);transition:box-shadow var(--transition),transform var(--transition);display:grid;grid-template-columns:1fr auto;gap:var(--space-2) var(--space-6);align-items:start}
+.entry:hover{box-shadow:var(--shadow-md);transform:translateY(-1px)}
+.entry.hidden{display:none}
+.entry-modern{font-size:var(--text-xs);text-transform:uppercase;letter-spacing:.1em;color:var(--color-text-faint);margin-bottom:var(--space-1)}
+.entry-slavic{font-family:var(--font-serif);font-size:var(--text-lg);font-weight:600;color:var(--color-text);margin-bottom:var(--space-2)}
+.entry-desc{font-size:var(--text-sm);color:var(--color-text-muted);font-style:italic;line-height:1.6;grid-column:1}
+.entry-example{grid-column:1/-1;margin-top:var(--space-3);padding:var(--space-3) var(--space-4);background:var(--color-surface-2);border-radius:var(--radius-md);font-size:var(--text-sm);color:var(--color-text-muted);font-style:italic;border-left:2px solid var(--color-gold)}
+.entry-author{font-size:var(--text-xs);color:var(--color-text-faint);text-align:right;white-space:nowrap}
+
+/* ── LOADING STATE ── */
+.loading{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:var(--space-20);gap:var(--space-4);color:var(--color-text-muted);font-family:var(--font-serif);font-style:italic;font-size:var(--text-lg)}
+.loading-spinner{width:40px;height:40px;border:2px solid var(--color-divider);border-top-color:var(--color-primary);border-radius:50%;animation:spin 1s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ── ERROR STATE ── */
+.error-state{display:none;flex-direction:column;align-items:center;text-align:center;padding:var(--space-16) var(--space-8);color:var(--color-text-muted);font-family:var(--font-serif)}
+.error-state h3{color:var(--color-text);font-size:var(--text-lg);margin-bottom:var(--space-2)}
+.error-state p{font-style:italic;max-width:40ch;margin-bottom:var(--space-4)}
+.error-state a{color:var(--color-primary)}
+
+.no-results{text-align:center;padding:var(--space-20) var(--space-6);color:var(--color-text-muted);font-family:var(--font-serif);font-style:italic;font-size:var(--text-lg);display:none}
+
+footer{text-align:center;padding:var(--space-10) var(--space-6);border-top:1px solid var(--color-divider);font-size:var(--text-sm);color:var(--color-text-faint);font-style:italic}
+footer a{color:var(--color-text-muted)}
+
+@media(max-width:640px){
+  .site-header{padding:var(--space-3) var(--space-4)}
+  .logo-title{font-size:1rem}
+  .github-btn span{display:none}
+  .hero{padding:var(--space-12) var(--space-4) var(--space-10)}
+  .hero-stats{gap:var(--space-6)}
+  .entry{grid-template-columns:1fr;gap:var(--space-2)}
+  .entry-author{text-align:left}
+}
+</style>
+</head>
+<body>
+
+<a href="#main" style="position:absolute;left:-9999px;top:var(--space-2);padding:var(--space-2) var(--space-4);background:var(--color-primary);color:var(--color-text-inverse);border-radius:var(--radius-md)">Перейти к содержимому</a>
+
+<header class="site-header">
+  <div class="logo-wrap">
+    <svg aria-label="Old Slavic IT Dictionary" width="36" height="36" viewBox="0 0 36 36" fill="none">
+      <circle cx="18" cy="18" r="16" stroke="currentColor" stroke-width="1.2" stroke-dasharray="4 2" opacity="0.3"/>
+      <path d="M10 28 Q14 16 24 8" stroke="var(--color-primary)" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+      <path d="M24 8 Q26 10 23 13 Q20 16 19 20" stroke="var(--color-gold)" stroke-width="1.4" stroke-linecap="round" fill="none"/>
+      <path d="M10 28 L12 24" stroke="var(--color-primary)" stroke-width="1.2" stroke-linecap="round"/>
+      <circle cx="24" cy="8" r="2" fill="var(--color-primary)"/>
+      <circle cx="14" cy="22" r="1.2" fill="var(--color-gold)" opacity="0.7"/>
+    </svg>
+    <span class="logo-title">Old Slavic IT Dictionary</span>
+  </div>
+  <div class="header-right">
+    <button class="theme-btn" data-theme-toggle aria-label="Переключить тему">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+    <a href="https://github.com/savalyev/old-slavic-it-dictionary" target="_blank" rel="noopener noreferrer" class="github-btn">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.6.113.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+      <span>GitHub</span>
+    </a>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero">
+    <p class="hero-ornament">✦ Словарь Древних Знаний ✦</p>
+    <h1 class="hero-title">Old Slavic IT</h1>
+    <div class="hero-divider" aria-hidden="true"></div>
+    <p class="hero-sub">Словарь, в котором современные IT-термины обретают душу древнеславянского языка. Ибо программирование — искусство столь же древнее, как и слово.</p>
+    <div class="hero-stats">
+      <div class="stat"><span class="stat-num" id="stat-count">…</span><span class="stat-label">Слов</span></div>
+      <div class="stat"><span class="stat-num" id="stat-letters">…</span><span class="stat-label">Букв</span></div>
+      <div class="stat"><span class="stat-num">∞</span><span class="stat-label">Мудрости</span></div>
+    </div>
+  </section>
+
+  <section class="search-section">
+    <div class="search-wrap">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="search" id="search" placeholder="Искать слово или перевод…" aria-label="Поиск по словарю" disabled>
+    </div>
+  </section>
+
+  <nav class="alpha-nav" id="alpha-nav" aria-label="Навигация по алфавиту"></nav>
+
+  <section class="dict-section" id="dict-section">
+
+    <!-- Loading state -->
+    <div class="loading" id="loading-state" aria-live="polite">
+      <div class="loading-spinner" aria-hidden="true"></div>
+      <span>Листаем летопись…</span>
+    </div>
+
+    <!-- Error state -->
+    <div class="error-state" id="error-state" role="alert">
+      <h3>Летопись не найдена</h3>
+      <p>Не удалось загрузить <code>dictionary.json</code>. Убедись, что файл лежит рядом с <code>index.html</code>.</p>
+      <a href="https://github.com/savalyev/old-slavic-it-dictionary" target="_blank" rel="noopener noreferrer">Открыть репозиторий</a>
+    </div>
+
+    <p class="no-results" id="no-results" role="status">Слово не найдено в летописях. Предложи его через Issue! 📜</p>
+
+  </section>
+</main>
+
+<footer>
+  <p>📜 Old Slavic IT Dictionary — летопись продолжается</p>
+  <p style="margin-top:var(--space-2)"><a href="https://github.com/savalyev/old-slavic-it-dictionary" target="_blank" rel="noopener noreferrer">Пополнить словарь на GitHub</a></p>
+</footer>
+
+<script type="module">
+// ── THEME TOGGLE ──
+(function(){
+  const btn = document.querySelector('[data-theme-toggle]');
+  const root = document.documentElement;
+  let dark = root.getAttribute('data-theme') === 'dark';
+  function setTheme(d) {
+    dark = d;
+    root.setAttribute('data-theme', d ? 'dark' : 'light');
+    btn.setAttribute('aria-label', d ? 'Светлая тема' : 'Тёмная тема');
+    btn.innerHTML = d
+      ? '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>'
+      : '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>';
+  }
+  setTheme(dark);
+  btn.addEventListener('click', () => setTheme(!dark));
+})();
+
+// ── LOAD & RENDER ──
+async function init() {
+  const loadingEl  = document.getElementById('loading-state');
+  const errorEl    = document.getElementById('error-state');
+  const searchEl   = document.getElementById('search');
+  const noResults  = document.getElementById('no-results');
+  const dictSection = document.getElementById('dict-section');
+  const alphaNav   = document.getElementById('alpha-nav');
+
+  let data;
+  try {
+    const res = await fetch('./dictionary.json');
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    data = await res.json();
+  } catch(e) {
+    loadingEl.style.display = 'none';
+    errorEl.style.display = 'flex';
+    console.error('Не удалось загрузить dictionary.json:', e);
+    return;
+  }
+
+  loadingEl.style.display = 'none';
+  searchEl.disabled = false;
+
+  // Group by first letter of old_slavic
+  const grouped = {};
+  data.forEach(e => {
+    const k = e.old_slavic[0].toUpperCase();
+    if (!grouped[k]) grouped[k] = [];
+    grouped[k].push(e);
+  });
+  const letters = Object.keys(grouped).sort();
+
+  // Stats
+  document.getElementById('stat-count').textContent = data.length;
+  document.getElementById('stat-letters').textContent = letters.length;
+
+  // Alphabet nav
+  letters.forEach(l => {
+    const btn = document.createElement('button');
+    btn.className = 'alpha-btn';
+    btn.textContent = l;
+    btn.setAttribute('aria-label', `Буква ${l}`);
+    btn.addEventListener('click', () => {
+      searchEl.value = '';
+      document.querySelectorAll('.letter-group').forEach(g => g.classList.remove('hidden'));
+      document.querySelectorAll('.entry').forEach(e => e.classList.remove('hidden'));
+      noResults.style.display = 'none';
+      document.getElementById('group-' + l)?.scrollIntoView({behavior:'smooth', block:'start'});
+      document.querySelectorAll('.alpha-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    });
+    alphaNav.appendChild(btn);
+  });
+
+  // Render groups
+  letters.forEach(l => {
+    const group = document.createElement('div');
+    group.className = 'letter-group';
+    group.id = 'group-' + l;
+    group.setAttribute('aria-label', `Слова на букву ${l}`);
+
+    const h2 = document.createElement('h2');
+    h2.className = 'letter-heading';
+    h2.textContent = l;
+    group.appendChild(h2);
+
+    const entriesEl = document.createElement('div');
+    entriesEl.className = 'entries';
+
+    grouped[l].forEach(e => {
+      const art = document.createElement('article');
+      art.className = 'entry';
+      art.dataset.modern = e.term.toLowerCase();
+      art.dataset.slavic = e.old_slavic.toLowerCase();
+      art.dataset.desc = e.description.toLowerCase();
+      art.innerHTML = `
+        <div>
+          <p class="entry-modern">${e.term}</p>
+          <p class="entry-slavic">${e.old_slavic}</p>
+          <p class="entry-desc">${e.description}</p>
+          ${e.example ? `<p class="entry-example">${e.example}</p>` : ''}
+        </div>
+        <span class="entry-author" aria-label="Автор">@${e.author}</span>
+      `;
+      entriesEl.appendChild(art);
+    });
+
+    group.appendChild(entriesEl);
+    dictSection.insertBefore(group, noResults);
+  });
+
+  // Search
+  searchEl.addEventListener('input', function() {
+    const q = this.value.toLowerCase().trim();
+    document.querySelectorAll('.alpha-btn').forEach(b => b.classList.remove('active'));
+    let any = false;
+    document.querySelectorAll('.letter-group').forEach(group => {
+      const entries = group.querySelectorAll('.entry');
+      let has = false;
+      entries.forEach(e => {
+        const match = !q || e.dataset.modern.includes(q) || e.dataset.slavic.includes(q) || e.dataset.desc.includes(q);
+        e.classList.toggle('hidden', !match);
+        if (match) has = true;
+      });
+      group.classList.toggle('hidden', !has);
+      if (has) any = true;
+    });
+    noResults.style.display = any ? 'none' : 'block';
+  });
+}
+
+init();
+</script>
+</body>
+</html>
