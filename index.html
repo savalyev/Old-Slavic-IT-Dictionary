@@ -196,7 +196,7 @@ footer a{color:var(--color-text-muted)}
   <p style="margin-top:var(--space-2)"><a href="https://github.com/savalyev/old-slavic-it-dictionary" target="_blank" rel="noopener noreferrer">Пополнить словарь на GitHub</a></p>
 </footer>
 
-<script type="module">
+<script>
 // ── THEME TOGGLE ──
 (function(){
   const btn = document.querySelector('[data-theme-toggle]');
@@ -225,7 +225,10 @@ async function init() {
 
   let data;
   try {
-    const res = await fetch('./dictionary.json');
+    const res = await fetch('./dictionary.json')
+  .then(r => r.text())
+  .then(t => { console.log(t); JSON.parse(t); })
+  .catch(e => console.error(e));
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     data = await res.json();
   } catch(e) {
