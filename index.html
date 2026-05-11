@@ -225,7 +225,10 @@ async function init() {
 
   let data;
   try {
-    const res = await fetch('./dictionary.json');
+    const res = await fetch('./dictionary.json')
+  .then(r => r.text())
+  .then(t => { console.log(t); JSON.parse(t); })
+  .catch(e => console.error(e));
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     data = await res.json();
   } catch(e) {
